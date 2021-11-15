@@ -37,7 +37,7 @@
        </div>
      </div>
      <div class="row justify-content-center m-0 p-0">
-       <div class="col-md-10 d-flex justify-content-center mt-3">
+       <div class="col-md-10 d-flex justify-content-center mt-3 mb-3">
          <img class="img-fluid" :src="post.imgUrl" alt="">
        </div>
       </div>

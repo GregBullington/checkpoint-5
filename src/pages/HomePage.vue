@@ -11,7 +11,7 @@
     </div>
   </div>
   <div class="row align-items-center container-fluid flex-column m-0 p-0">
-    <div v-for="p in allPosts" :key="p.id" class="col-md-6 card bg-light  elevation-3 mt-4 d-flex justify-content-center">
+    <div v-for="p in allPosts" :key="p.id" class="col-md-8 card bg-light  elevation-3 mt-4 d-flex justify-content-center">
       <Post :post= "p" />
     </div>
   </div>
