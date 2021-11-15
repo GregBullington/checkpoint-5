@@ -1,12 +1,10 @@
 <template>
-<div class="row justify-content-center">
-  <div class="col-md-10 ms-2 mt-2 mb-2">
-    <Search />
-  </div>
-  <div v-for="a in ads" :key="a.title" class="col-md-3">
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div v-for="a in ads" :key="a.title" class="col-md-5">
       <Ads :ads= "a" />
+    </div>
   </div>
-</div>
   <div v-if="account.id" class="row justify-content-center">
     <div class="col-md-6 card elevation-2 m-3">
       <CreatePost />
@@ -17,6 +15,7 @@
       <Post :post= "p" />
     </div>
   </div>
+</div>
 </template>
 
 <script>

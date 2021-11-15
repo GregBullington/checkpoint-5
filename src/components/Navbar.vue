@@ -1,13 +1,14 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary px-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
         <img
           alt="logo"
-          src="../assets/img/cw-logo.png"
+          src="../assets/img/NetworkLogo.png"
           height="45"
         />
       </div>
+      <span class="m-2 title-font">ETWORK</span>
     </router-link>
     <button
       class="navbar-toggler"
@@ -28,6 +29,7 @@
           </router-link> -->
         </li>
       </ul>
+      <Search />
       <span class="navbar-text">
         <button
           class="btn selectable text-success lighten-30 text-uppercase my-2 my-lg-0"
@@ -123,5 +125,12 @@ a:hover {
   border-bottom: 2px solid var(--bs-success);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+}
+.title-font {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 33px;
 }
 </style>

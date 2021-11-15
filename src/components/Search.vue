@@ -1,11 +1,8 @@
 <template>
   <div class="row justify-content-center">
-    <div class="col">
+    <div class="col mx-5">
       <form @submit.prevent = "search" class="input-group" >
-        <input type="text" v-model="searchText" class="form-control" placeholder="What would you like to search for?"/>
-        <button class="btn btnoutline-primary">
-          <i class="mdi mdi-magnify" ></i>
-          </button>
+        <input type="text" v-model="searchText" class="form-control" placeholder="Search posts...">
       </form>
     </div>
   </div>

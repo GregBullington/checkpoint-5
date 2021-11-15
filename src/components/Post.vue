@@ -12,10 +12,21 @@
         </div>
       </div>
      <div class="row">
-       <div class="col p-2">
-         <img class="img-container selectable" :src="post.creator.picture" alt="creatorPicture" @click="creatorProfile(post.creatorId)">
-          <b @click="creatorProfile(post.creatorId)" class="ms-3 user-font-size selectable">{{post.creator.name}}</b>
-       </div>
+      <div class="col-md-2 p-2 d-flex justify-content-center">
+        <img class="img-container selectable" :src="post.creator.picture" alt="creatorPicture" @click="creatorProfile(post.creatorId)">
+      </div>
+      <div class="col-md-10 p-0">
+        <div class="row mt-3">
+          <div class="col">
+          <b @click="creatorProfile(post.creatorId)" class="user-font-size selectable">{{post.creator.name}}</b>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            {{post.creator.updatedAt}}
+          </div>
+        </div>
+      </div>
      </div>
      <div class="row">
        <div class="col mt-3 ms-3">

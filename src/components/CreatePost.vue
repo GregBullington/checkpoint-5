@@ -1,14 +1,13 @@
 <template>
   <div class="row">
-    <div class="col p-3">
-       <img class="img-container selectable" :src="account.picture" alt="" />
-      <b class="selectable ms-3 user-font-size">{{account.name}}</b>
+    <div class="col-md-2 p-3">
+       <img class="img-container" :src="account.picture" alt="" />
+    </div>
+    <div class="col-md-8">
+      <textarea class="mt-3" style="resize: none;" v-model="postText.body" name="post-body" id="" cols="53" rows="5" placeholder="What's on your mind?"></textarea>
     </div>
   </div>
-  <div class="row justify-content-center">
-    <div class="col">
-      <textarea class="m-2" style="resize: none;" v-model="postText.body" name="post-body" id="" cols="55" rows="3" placeholder="What's on your mind?"></textarea>
-    </div>
+
     <div class="row">
       <div class="col text-end">
         <span class="me-5">
@@ -19,7 +18,6 @@
         </span>
       </div>
     </div>
-  </div>
 </template>
 
 
