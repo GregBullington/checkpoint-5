@@ -14,9 +14,9 @@
               </span>
           </div>
           <div class="col-md-9 text-end mt-2" id="social-icons">
-            <a href=""><i class="mdi mdi-github mdi-48px ms-2 text-dark"></i></a>
-            <a href=""><i class="mdi mdi-linkedin mdi-48px ms-2 text-dark"></i></a>
-            <a href=""><i class="mdi mdi-file-account mdi-48px ms-2 text-dark"></i></a>
+            <a :href="profile.github"><i class="mdi mdi-github mdi-48px ms-2 text-dark"></i></a>
+            <a :href="profile.kinked"><i class="mdi mdi-linkedin mdi-48px ms-2 text-dark"></i></a>
+            <a :href="profile.resume"><i class="mdi mdi-file-account mdi-48px ms-2 text-dark"></i></a>
           </div>
         </div>
         <div class="row">
