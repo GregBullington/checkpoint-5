@@ -126,11 +126,5 @@ a:hover {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
-.title-font {
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 25px;
-  line-height: 33px;
-}
+
 </style>

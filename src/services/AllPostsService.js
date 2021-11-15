@@ -10,6 +10,9 @@ class AllPostsService {
     const res = await api.get("api/posts" + query)
     // logger.log(res.data)
     AppState.allPosts = res.data.posts.map(p => new Post(p))
+    AppState.currentPage = res.data.currentPage
+    AppState.pages = res.data.totalPages
+
     // logger.log(AppState.allPosts)
   }
   async createPost(data) {

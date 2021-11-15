@@ -38,5 +38,12 @@ form:invalid button[type="submit"] {
 
 textarea {
   border: none;
-  outline: grey dotted 3px;
+  outline: #3ba6dc7e dotted 3px;
+}
+.title-font {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 33px;
 }

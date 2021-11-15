@@ -17,14 +17,15 @@
       </div>
       <div class="col-md-10 p-0">
         <div class="row mt-3">
-          <div class="col">
+          <div class="col" id="post-creator-info">
           <b @click="creatorProfile(post.creatorId)" class="user-font-size selectable">{{post.creator.name}}</b>
           </div>
         </div>
         <div class="row">
-          <div class="col">
-            {{post.creator.updatedAt}}
-          </div>
+          <span class="col text-dark" id="post-creator-info">
+            {{post.creator.updatedAt}} 
+            <i class="ms-2 fas fa-user-graduate"></i>
+          </span>
         </div>
       </div>
      </div>
@@ -105,5 +106,10 @@ export default {
   font-size: 20px;
 }
 
+@media screen and (max-width: 600px) {
+  #post-creator-info {
+    text-align: center;
+  }
+}
 
 </style>
