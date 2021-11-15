@@ -37,6 +37,7 @@ export default {
         try {
           await allPostsService.createPost(postText.value)
           document.getElementById('post-body').value = ''
+          Pop.toast("Post Created!", 'success')
         } catch (error) {
           logger.error(error)
           Pop.toast("Something is not right!", 'error')

@@ -15,7 +15,7 @@
       <Post :post= "p" />
     </div>
   </div>
-  <div class="mt-2" v-if="pages > 0">
+  <div class="m-2" v-if="pages > 0">
     <button class="btn me-1 text-white selectable" :class=" {'btn-primary': page === currentPage, 'btn-dark': page !== currentPage,}" :disabled="page === currentPage" v-for="page in pages" :key="page" @click="getPage(page)">
       {{ page }}
     </button>

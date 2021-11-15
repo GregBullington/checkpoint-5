@@ -8,8 +8,10 @@
         <div class="row justify-content-start">
           <div class="col-md-2 fa-stack fa-2x">
             <img class="mt-2 prof-img-container" :src="profile.picture" alt="" />
-              <i class="fas fa-circle fa-stack-2x icon-color move-icon" id="graduate-icon"></i>
-              <i class="fas fa-user-graduate fa-stack-1x move-icon text-dark" id="graduate-icon"></i>
+              <span v-show="profile.graduated">
+               <i class="fas fa-circle fa-stack-2x icon-color move-icon" id="graduate-icon"></i>
+               <i class="fas fa-user-graduate fa-stack-1x move-icon text-dark" id="graduate-icon"></i>
+              </span>
           </div>
           <div class="col-md-9 text-end mt-2" id="social-icons">
             <a href=""><i class="mdi mdi-github mdi-48px ms-2 text-dark"></i></a>
@@ -20,7 +22,7 @@
         <div class="row">
           <div class="col-md-2 mt-5 ms-1 title-font" id="prof-class">
           <p style="font-size: 23px;">
-            {{profile.class}}Class of 2014
+            {{profile.class}}
           </p>
           </div>
         </div>
@@ -31,21 +33,27 @@
         </div>
         <div class="row justify-content-center">
           <div class="col-md-8 fst-italic">
-            <p>{{profile.bio}} Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos asperiores tempora omnis molestias est harum expedita porro facilis alias. Harum non consequatur saepe deleniti iusto dolore maxime molestiae vel optio.</p>
+            <p>{{profile.bio}}</p>
           </div>
         </div>
-        <div class="row justify-content-end" id="edit">
+        <div v-if="profile.id === account.id" class="row justify-content-end" id="edit">
           <div class="col-3 m-4" id="edit-div">
-            <button class="btn btn-outline-primary rounded px-4">
+            <button class="btn btn-outline-primary rounded px-4" data-bs-toggle="offcanvas" href="#editprof">
               Edit
             </button>
           </div>
         </div>
+        <EditProf />
       </div>
     </div>
+  <div class="row justify-content-center">
+    <div v-for="a in ads" :key="a.title" class="col-md-5 p-0">
+      <Ads :ads= "a" />
+    </div>
+  </div>
   <div v-if="account.id" class="row justify-content-center">
-    <div class="col-md-6 card bg-light elevation-2 m-2">
-      <CreatePost v-if="account.id == profile.id" />
+    <div v-if="account.id == profile.id" class="col-md-6 card bg-light elevation-2 m-2">
+      <CreatePost />
     </div>
   </div>
   </div>
@@ -54,6 +62,11 @@
       <Post :post="p" />
     </div>
   </div>
+<div class="m-2" v-if="pages > 0">
+  <button class="btn me-1 text-white selectable" :class=" {'btn-primary': page === currentPage, 'btn-dark': page !== currentPage,}" :disabled="page === currentPage" v-for="page in pages" :key="page" @click="getPage(page)">
+    {{ page }}
+  </button>
+</div>
 </template>
 
 
@@ -65,6 +78,7 @@ import { logger } from "../utils/Logger";
 import Pop from "../utils/Pop";
 import { allPostsService } from "../services/AllPostsService";
 import { AppState } from "../AppState";
+import { adsService } from "../services/AdsService";
 export default {
   name: 'Profile',
   setup(){
@@ -79,11 +93,29 @@ export default {
         logger.error(error)
         Pop.toast(error.message, "error")
       }
+      try {
+        await adsService.getAds()
+      } catch (error) {
+        logger.error(error)
+        Pop.toast("Something went wrong", 'error')
+      }
     })
     return {
       allPosts: computed(() => AppState.allPosts),
       account: computed(() => AppState.account),
       profile: computed(() => AppState.profile),
+      pages: computed(() => AppState.pages),
+      currentPage: computed(() => AppState.currentPage),
+      ads: computed(() => AppState.ads),
+
+      async getPage(page) {
+        try {
+          await allPostsService.getAllPosts("?page=" + page)
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message, 'error')
+        }
+      },
     }
   }
 }

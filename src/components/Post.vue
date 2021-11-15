@@ -23,8 +23,10 @@
         </div>
         <div class="row">
           <span class="col text-dark" id="post-creator-info">
-            {{post.creator.updatedAt}} 
-            <i class="ms-2 fas fa-user-graduate"></i>
+            {{new Date(post.creator.updatedAt).toDateString()}}
+            <span v-if="post.creator.graduated">
+              <i class="ms-2 fas fa-user-graduate"></i>
+            </span>
           </span>
         </div>
       </div>
