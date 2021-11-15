@@ -20,7 +20,6 @@ a {
 }
 
 input,
-textarea,
 select {
   &:not(:placeholder-shown) {
     &:valid {
@@ -35,4 +34,9 @@ select {
 form:invalid button[type="submit"] {
   filter: grayscale(1);
   pointer-events: none;
+}
+
+textarea {
+  border: none;
+  outline: grey dotted 3px;
 }

@@ -57,7 +57,6 @@
             aria-labelledby="authDropdown"
           >
             <router-link :to="{ name: 'Profile', params: { id: account.id } }">
-              <!--FIXME- trying to access account ID before account is getting back from API conditionally render this info-->
 
               <div class="list-group-item list-group-item-action hoverable">
                 My Profile
@@ -88,14 +87,14 @@ import { computed } from 'vue'
 export default {
   setup() {
     return {
-      user: computed(() => AppState.user),
-      account: computed(() => AppState.account),
       async login() {
         AuthService.loginWithPopup()
       },
       async logout() {
         AuthService.logout({ returnTo: window.location.origin })
-      }
+      },
+      user: computed(() => AppState.user),
+      account: computed(() => AppState.account),
     }
   }
 }

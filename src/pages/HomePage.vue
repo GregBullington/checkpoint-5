@@ -1,27 +1,31 @@
 <template>
 <div class="row justify-content-center">
-  <div class="col-md-8 mt-2">
+  <div class="col-md-10 ms-2 mt-2 mb-2">
     <Search />
   </div>
-  <div class="col-md-6 card sticky-top elevation-2 mt-2">
-    <div>
-      <!--post form FIXME -->
-    </div>
+  <div v-for="a in ads" :key="a.title" class="col-md-3">
+      <Ads :ads= "a" />
   </div>
 </div>
+  <div v-if="account.id" class="row justify-content-center">
+    <div class="col-md-6 card elevation-2 m-3">
+      <CreatePost />
+    </div>
+  </div>
   <div class="row align-items-center container-fluid flex-column m-0 p-0">
-    <div v-for="p in allPosts" :key="p.id" class="col-md-6 card selectable elevation-3 mt-4 d-flex justify-content-center">
-      <Post :post="p" />
+    <div v-for="p in allPosts" :key="p.id" class="col-md-6 card  elevation-3 mt-4 d-flex justify-content-center">
+      <Post :post= "p" />
     </div>
   </div>
 </template>
 
 <script>
+import { adsService } from "../services/AdsService"
 import { allPostsService } from "../services/AllPostsService"
 import { logger } from "../utils/Logger"
 import Pop from "../utils/Pop"
 import { AppState } from "../AppState"
-import { computed, onMounted } from "@vue/runtime-core"
+import { computed, onMounted, ref } from "@vue/runtime-core"
 export default {
   name: 'Home',
   setup() {
@@ -32,9 +36,17 @@ export default {
         logger.error(error)
         Pop.toast("Something went wrong", 'error')
       }
+      try {
+        await adsService.getAds()
+      } catch (error) {
+        logger.error(error)
+        Pop.toast("Something went wrong", 'error')
+      } 
     })
     return {
-      allPosts: computed(() => AppState.allPosts)
+      allPosts: computed(() => AppState.allPosts),
+      account: computed(() => AppState.account),
+      ads: computed(() => AppState.ads)
     }
   }
 }

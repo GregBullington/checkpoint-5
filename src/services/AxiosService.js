@@ -5,7 +5,7 @@ export const api = Axios.create({
   timeout: 8000
 })
 
-export const networkApi = Axios.create({
-  baseURL: 'https://bcw-sandbox.herokuapp.com/api',
-  timeout: 8000
-})
+// export const networkApi = Axios.create({
+//   baseURL: 'https://bcw-sandbox.herokuapp.com/api',
+//   timeout: 8000
+// })

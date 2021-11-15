@@ -1,5 +1,5 @@
 <template>
-  <div class="row px-5">
+  <div class="row justify-content-center">
     <div class="col">
       <form @submit.prevent = "search" class="input-group" >
         <input type="text" v-model="searchText" class="form-control" placeholder="What would you like to search for?"/>
@@ -22,7 +22,6 @@ export default {
   setup(){
     const searchText = ref("")
     return {
-      searchText,
       async search() {
         try {
           await allPostsService.getAllPosts("?query=" + searchText.value)
@@ -31,7 +30,8 @@ export default {
           logger.error(error)
           Pop.toast(error.message, "error")
         }
-      }
+      },
+      searchText,
     }
   }
 }
