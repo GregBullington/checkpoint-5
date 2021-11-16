@@ -52,7 +52,7 @@
     </div>
   </div>
   <div v-if="account.id" class="row justify-content-center">
-    <div v-if="account.id == profile.id" class="col-md-6 card bg-light elevation-2 m-2">
+    <div v-if="account.id == profile.id" class="col-md-8 card bg-light elevation-2 m-2">
       <CreatePost />
     </div>
   </div>
