@@ -1,21 +1,32 @@
 <template>
-  <div class="row">
+  <div class="row justify-content-center">
     <div class="col-md-2 p-3">
-       <img class="img-container" :src="account.picture" alt="" />
+      <img class="img-container" :src="account.picture" alt="" />
     </div>
     <div class="col-md-8">
-        <textarea class="mt-3 bg-light" style="resize: none;" v-model="postText.body" name="post-body" id="post-body" cols="53" rows="5" placeholder="What's on your mind?"></textarea>
+      <textarea
+        class="mt-3 bg-light form-control"
+        style="resize: none"
+        v-model="postText.body"
+        name="post-body"
+        id="post-body"
+        cols="100"
+        rows="4"
+        placeholder="What's on your mind?"
+      ></textarea>
     </div>
   </div>
   <div class="row">
-    <div class="col-8 text-center" id="photo-icon">
+    <div class="col text-center" id="photo-icon">
       <span>
         <i class="mdi mdi-image-multiple mdi-24px selectable"> Photo/Video</i>
       </span>
     </div>
     <div class="col-2 ms-auto d-flex align-items-center text-end">
       <span>
-          <i class="fab fa-telegram-plane selectable fa-1x" @click="createPost()">  Post</i>
+        <i class="fab fa-telegram-plane selectable fa-1x" @click="createPost()">
+          Post</i
+        >
       </span>
     </div>
   </div>
@@ -23,32 +34,32 @@
 
 
 <script>
-import { computed, ref } from "@vue/reactivity"
-import { allPostsService } from "../services/AllPostsService"
-import { logger } from "../utils/Logger"
-import Pop from "../utils/Pop"
-import { AppState } from "../AppState"
-import { profileService } from "../services/ProfileService"
+import { computed, ref } from "@vue/reactivity";
+import { allPostsService } from "../services/AllPostsService";
+import { logger } from "../utils/Logger";
+import Pop from "../utils/Pop";
+import { AppState } from "../AppState";
+import { profileService } from "../services/ProfileService";
 export default {
-  setup(){
-    const postText = ref({})
+  setup() {
+    const postText = ref({});
     return {
       async createPost() {
         try {
-          await allPostsService.createPost(postText.value)
-          document.getElementById('post-body').value = ''
-          Pop.toast("Post Created!", 'success')
+          await allPostsService.createPost(postText.value);
+          document.getElementById("post-body").value = "";
+          Pop.toast("Post Created!", "success");
         } catch (error) {
-          logger.error(error)
-          Pop.toast("Something is not right!", 'error')
+          logger.error(error);
+          Pop.toast("Something is not right!", "error");
         }
       },
       postText,
       account: computed(() => AppState.account),
       profile: computed(() => AppState.profile),
-    }
-  }
-}
+    };
+  },
+};
 </script>
 
 
@@ -73,8 +84,7 @@ export default {
 
 @media screen and (max-width: 600px) {
   #photo-icon {
-    text-align: start!important;
+    text-align: start !important;
   }
 }
-
 </style>
