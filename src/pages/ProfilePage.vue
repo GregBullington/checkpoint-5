@@ -47,7 +47,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-8 text-start ms-5 title-font" id="prof-name">
+          <div class="col-md-8 text-start ms-5 title-font mt-2" id="prof-name">
             <h2>{{ profile.name }}</h2>
           </div>
         </div>
